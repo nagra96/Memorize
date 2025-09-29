@@ -7,14 +7,16 @@ import SwiftUI
 
 
 struct ContentView: View{
-    
+    // can use array here another method is let emojis: [String] = ["👻","🎃","👺","🙈"] is absoulate same as using array
     var body: some View {
-        let emojis: Array<String> = ["👻","🎃","👺","🙈"]// array is list of different strings and int
+        let emojis: [String] = ["👻","🎃","👺","🙈"]// array is list of different strings and int// do not use last array file like emoji[4], use number from starting 0
         HStack {
-            CardView(content: emojis[0], isFaceUp: false)
-            CardView(content: emojis[1])
-            CardView(content: emojis[3],isFaceUp: true)
-            CardView(content: emojis[4],isFaceUp: true)
+            // for each is used to display views
+            // use foreach(emojis.indices,id:\.self)
+            // indices use to add views in ascending or increasing order
+            ForEach(emojis.indices,id:\.self){
+                index in CardView(content: emojis[index])
+            }
             }
             .foregroundColor(Color.orange)
             .padding()
